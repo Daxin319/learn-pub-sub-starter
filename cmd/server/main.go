@@ -34,5 +34,8 @@ func main() {
 	<-signalChan
 	fmt.Println("\nExiting...")
 
-	pubsub.PublishJSON(newChannel, routing.ExchangePerilDirect, routing.PauseKey, routing.PlayingState{IsPaused: true})
+	err = pubsub.PublishJSON(newChannel, routing.ExchangePerilDirect, routing.PauseKey, routing.PlayingState{IsPaused: true})
+	if err != nil {
+		return
+	}
 }
